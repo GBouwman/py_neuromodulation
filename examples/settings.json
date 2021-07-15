@@ -1,19 +1,19 @@
 {
-    "BIDS_path": "C:\\Users\\richa\\GitHub\\py_neuromodulation\\pyneuromodulation\\tests\\data",
-    "out_path": "C:\\Users\\richa\\GitHub\\py_neuromodulation\\pyneuromodulation\\tests\\data\\derivatives",
+    "BIDS_path": "D:\\Jupyter notebooks\\Interventional Cognitive Neuromodulation\\data\\BIDS Berlin\\Raw",
+    "out_path": "D:\\Jupyter notebooks\\Interventional Cognitive Neuromodulation\\data\\derivatives",
     "sampling_rate_features": 10,
     "methods": {
         "raw_resampling": true,
-        "raw_normalization": true,
+        "raw_normalization": false,
         "feature_normalization": true,
-        "kalman_filter": true,
+        "kalman_filter": false,
         "re_referencing": true,
         "notch_filter": true,
         "bandpass_filter": true,
-        "raw_hjorth": true,
-        "sharpwave_analysis": true,
-        "return_raw": true,
-        "project_cortex": true,
+        "raw_hjorth": false,
+        "sharpwave_analysis": false,
+        "return_raw": false,
+        "project_cortex": false,
         "project_subcortex": false,
         "pdc": false,
         "dtf": false
@@ -102,8 +102,8 @@
         },
         "bandpower_features": {
             "activity": true,
-            "mobility": true,
-            "complexity": true
+            "mobility": false,
+            "complexity": false
         }
     },
     "sharpwave_analysis_settings": {
