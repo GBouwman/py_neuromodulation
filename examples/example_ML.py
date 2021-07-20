@@ -14,8 +14,10 @@ from skopt.space import Real, Integer, Categorical
 
 def run_example_ML():
 
-    PATH_FEATURES = os.path.join(PATH_PYNEUROMODULATION, 'pyneuromodulation', 'tests', 'data', 'derivatives')
-    FEATURE_FILE = r"sub-testsub_ses-EphysMedOff_task-buttonpress_ieeg"
+    # PATH_FEATURES = os.path.join(PATH_PYNEUROMODULATION, 'pyneuromodulation', 'tests', 'data', 'derivatives')
+    # FEATURE_FILE = r"sub-testsub_ses-EphysMedOff_task-buttonpress_ieeg"
+    PATH_FEATURES = r"D:\Jupyter notebooks\Interventional Cognitive Neuromodulation\data\derivatives"
+    FEATURE_FILE = r"sub-002_ses-EphysMedOff01_task-SelfpacedRotationR_acq-StimOff_run-01_ieeg"
     print("estimation Feature file "+str(FEATURE_FILE))
     parser = argparse.ArgumentParser()
     parser.add_argument('-f','--file',type=str,required=False)
@@ -60,7 +62,7 @@ def run_example_ML():
     acq_func = "EI"
     acq_optimizer = "sampling"
     initial_point_generator = "lhs"
-    print("runnig Bayesian Optimization")
+    print("running Bayesian Optimization")
     res_skopt = decoder.run_Bay_Opt(space_XGB, rounds=10, base_estimator=base_estimator,
                                     acq_func=acq_func, acq_optimizer=acq_optimizer,
                                     initial_point_generator=initial_point_generator)
@@ -76,3 +78,11 @@ def run_example_ML():
 if __name__ == "__main__":
 
     run_example_ML()
+
+    # import pandas as pd
+    # FILE_PATH = r"D:\Jupyter notebooks\Interventional Cognitive Neuromodulation\data\derivatives\sub-002_ses-EphysMedOff01_task-SelfpacedRotationR_acq-StimOff_run-01_ieeg\sub-002_ses-EphysMedOff01_task-SelfpacedRotationR_acq-StimOff_run-01_ieeg_ML_RES.p"
+    # file = pd.read_pickle(FILE_PATH)
+    # print(type(file))
+    # print(file.keys())
+    # import numpy as np
+    # np.save("results.npy", file)

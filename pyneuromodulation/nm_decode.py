@@ -95,7 +95,7 @@ class Decoder:
                     self.target_ch = self.df_M1[self.df_M1["target"] == 1]["name"].iloc[0]
 
         # for classification dependin on the label, set to binary label 
-        self.label = np.nan_to_num(np.array(self.features[self.target_ch])) > 0.3
+        self.label = np.nan_to_num(np.array(self.features[self.target_ch])) # > 0.3
         self.data = np.nan_to_num(np.array(self.features[[col for col in self.features.columns
                                   if not (('time' in col) or (self.target_ch in col))]]))
 
@@ -214,6 +214,7 @@ class Decoder:
             # optionally split training data also into train and validation
             # for XGBOOST
             if XGB:
+
                 X_train, X_val, y_train, y_val = \
                     model_selection.train_test_split(
                         X_train, y_train, train_size=0.8,shuffle=False)
@@ -225,7 +226,6 @@ class Decoder:
                     X_train, y_train, eval_set=[(X_val, y_val)],
                     early_stopping_rounds=10, sample_weight=classes_weights,
                     verbose=False)
-
             else:
                 # LM 
                 model_train.fit(X_train, y_train)
