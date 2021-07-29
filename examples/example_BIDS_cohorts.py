@@ -4,7 +4,8 @@ from bids import BIDSLayout
 from itertools import product
 import os
 
-os.chdir(os.path.join(os.pardir,'pyneuromodulation'))
+# os.chdir(os.path.join(os.pardir,'pyneuromodulation'))
+os.chdir(r"pyneuromodulation")
 sys.path.append(os.path.join(os.pardir,'pyneuromodulation'))
 sys.path.append(os.path.join(os.pardir, 'examples'))
 import start_BIDS
@@ -40,40 +41,57 @@ if __name__ == "__main__":
         run_files.append(layout.get(subject=sub, extension='.vhdr')[0])
     '''
 
-    # BEIJING SUBJECTS 
-    PATH_BIDS =  "C:\\Users\\ICN_admin\\Documents\\Decoding_Toolbox\\Data\\Beijing"
-    layout = BIDSLayout(PATH_BIDS)
-    subjects = layout.get_subjects()
-    run_files = []
-    for sub in subjects:
-        if sub != "FOG013":
-            try:
-                run_files.append(layout.get(subject=sub, task='ButtonPress', extension='.vhdr')[0])
-            except:
-                pass
-
-    #M1_files = [None for i in range(len(run_files))]  # specify no M1 files
-    #start_BIDS.est_features_run(run_files[4])
-    pool = multiprocessing.Pool(processes=10)
-    
-    # call here the pool only with run files, M1 files are created on the fly
-    pool.map(start_BIDS.est_features_run, run_files)
-    
+    # # BEIJING SUBJECTS
+    # PATH_BIDS =  "C:\\Users\\ICN_admin\\Documents\\Decoding_Toolbox\\Data\\Beijing"
+    # layout = BIDSLayout(PATH_BIDS)
+    # subjects = layout.get_subjects()
+    # run_files = []
+    # for sub in subjects:
+    #     if sub != "FOG013":
+    #         try:
+    #             run_files.append(layout.get(subject=sub, task='ButtonPress', extension='.vhdr')[0])
+    #         except:
+    #             pass
+    #
+    # #M1_files = [None for i in range(len(run_files))]  # specify no M1 files
+    # #start_BIDS.est_features_run(run_files[4])
+    # pool = multiprocessing.Pool(processes=10)
+    #
+    # # call here the pool only with run files, M1 files are created on the fly
+    # pool.map(start_BIDS.est_features_run, run_files)
+    #
     
     # BERLIN SUBJECTS
     
-    BIDS_PATH = r"C:\Users\ICN_admin\OneDrive - Charité - Universitätsmedizin Berlin\Data\BIDS_Berlin_ECOG_LFP\rawdata"
+    BIDS_PATH = r"D:\Jupyter notebooks\Interventional Cognitive Neuromodulation\data\BIDS Berlin\Raw"
     PATH_RUNS  = [
-        r"sub-001\ses-EphysMedOff01\ieeg\sub-001_ses-EphysMedOff01_task-BlockRotationR_acq-StimOffOn_run-01_ieeg.vhdr",
-        r"sub-001\ses-EphysMedOn01\ieeg\sub-001_ses-EphysMedOn01_task-SelfpacedForceWheel_acq-StimOff_run-01_ieeg.vhdr",
+        # r"sub-001\ses-EphysMedOff01\ieeg\sub-001_ses-EphysMedOff01_task-BlockRotationR_acq-StimOffOn_run-01_ieeg.vhdr",
+        # r"sub-001\ses-EphysMedOn01\ieeg\sub-001_ses-EphysMedOn01_task-SelfpacedForceWheel_acq-StimOff_run-01_ieeg.vhdr",
+        r"sub-002\ses-EphysMedOff02\ieeg\sub-002_ses-EphysMedOff01_task-SelfpacedRotationR_acq-StimOff_run-01_ieeg.vhdr",
         r"sub-002\ses-EphysMedOff02\ieeg\sub-002_ses-EphysMedOff02_task-SelfpacedRotationR_acq-StimOff_run-01_ieeg.vhdr",
+        r"sub-002\ses-EphysMedOff02\ieeg\sub-002_ses-EphysMedOff03_task-SelfpacedRotationR_acq-StimOn_run-01_ieeg.vhdr",
         r"sub-003\ses-EphysMedOff01\ieeg\sub-003_ses-EphysMedOff01_task-SelfpacedRotationR_acq-StimOff_run-01_ieeg.vhdr",
+        r"sub-003\ses-EphysMedOff01\ieeg\sub-003_ses-EphysMedOn03_task-SelfpacedRotationR_acq-StimOff_run-01_ieeg.vhdr",
         r"sub-004\ses-EphysMedOff01\ieeg\sub-004_ses-EphysMedOff01_task-SelfpacedRotationL_acq-StimOff_run-01_ieeg.vhdr",
         r"sub-004\ses-EphysMedOff01\ieeg\sub-004_ses-EphysMedOff01_task-SelfpacedRotationR_acq-StimOff_run-01_ieeg.vhdr",
-        r"sub-005\ses-EphysMedOff01\ieeg\sub-005_ses-EphysMedOff01_task-SelfpacedRotationR_acq-StimOff_run-01_ieeg.vhdr"
+        r"sub-004\ses-EphysMedOff01\ieeg\sub-004_ses-EphysMedOn01_task-SelfpacedRotationL_acq-StimOff_run-01_ieeg.vhdr",
+        r"sub-004\ses-EphysMedOff01\ieeg\sub-004_ses-EphysMedOn01_task-SelfpacedRotationR_acq-StimOff_run-01_ieeg.vhdr",
+        r"sub-005\ses-EphysMedOff01\ieeg\sub-005_ses-EphysMedOff01_task-SelfpacedRotationR_acq-StimOff_run-01_ieeg.vhdr",
+        r"sub-005\ses-EphysMedOff01\ieeg\sub-005_ses-EphysMedOff02_task-SelfpacedRotationL_acq-StimOn_run-01_ieeg.vhdr",
+        r"sub-005\ses-EphysMedOff01\ieeg\sub-005_ses-EphysMedOff02_task-SelfpacedRotationR_acq-StimOn_run-01_ieeg.vhdr",
+        r"sub-005\ses-EphysMedOff01\ieeg\sub-005_ses-EphysMedOn01_task-SelfpacedRotationL_acq-StimOff_run-01_ieeg.vhdr",
+        r"sub-005\ses-EphysMedOff01\ieeg\sub-005_ses-EphysMedOn01_task-SelfpacedRotationR_acq-StimOff_run-01_ieeg.vhdr",
+        r"sub-005\ses-EphysMedOff01\ieeg\sub-005_ses-EphysMedOn02_task-SelfpacedRotationL_acq-StimOn_run-01_ieeg.vhdr",
+        r"sub-005\ses-EphysMedOff01\ieeg\sub-005_ses-EphysMedOn02_task-SelfpacedRotationR_acq-StimOn_run-01_ieeg.vhdr",
     ]
 
-    #PATH_RUNS_BERLIN = []
-    #for path in PATH_RUNS:
-    #    PATH_RUNS_BERLIN.append(os.path.join(BIDS_PATH, path))
-    
+
+
+    PATH_RUNS_BERLIN = []
+    for path in PATH_RUNS:
+       PATH_RUNS_BERLIN.append(os.path.join(BIDS_PATH, path))
+
+    for PATH_RUN in PATH_RUNS_BERLIN:
+        print(os.path.isfile(PATH_RUN))
+        start_BIDS.est_features_run(PATH_RUN)
+
