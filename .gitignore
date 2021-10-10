@@ -141,3 +141,5 @@ dmypy.json
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
 **/.history
+/pyneuromodulation/not pushed/
+/results and models/

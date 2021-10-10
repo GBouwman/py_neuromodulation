@@ -1,7 +1,7 @@
 {
     "BIDS_path": "D:\\Jupyter notebooks\\Interventional Cognitive Neuromodulation\\data\\BIDS Berlin\\Raw",
-    "out_path": "D:\\Jupyter notebooks\\Interventional Cognitive Neuromodulation\\data\\derivatives",
-    "sampling_rate_features": 10,
+    "out_path": "D:\\Jupyter notebooks\\Interventional Cognitive Neuromodulation\\data\\derivatives_cnt",
+    "sampling_rate_features": 100,
     "methods": {
         "raw_resampling": true,
         "raw_normalization": false,
@@ -9,10 +9,10 @@
         "kalman_filter": false,
         "re_referencing": true,
         "notch_filter": true,
-        "bandpass_filter": true,
+        "bandpass_filter": false,
         "raw_hjorth": false,
         "sharpwave_analysis": false,
-        "return_raw": false,
+        "return_raw": true,
         "project_cortex": false,
         "project_subcortex": false,
         "pdc": false,
